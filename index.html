@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Aetheris Terminal — Institutional financial intelligence powered by CoinMarketCap API. Real-time RWA solvency auditing, derivative cascade scanning, macro yield curves, and 24/7 tokenized equity monitoring." />
+    <title>Aetheris Terminal — Institutional RWA &amp; Market Intelligence</title>
+    <!-- Early theme init script to guarantee default white mode and prevent flash -->
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('aetheris_theme');
+          var theme = (saved === 'dark') ? 'dark' : 'light';
+          if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+            document.documentElement.setAttribute('data-theme', 'dark');
+            document.documentElement.style.colorScheme = 'dark';
+          } else {
+            document.documentElement.classList.remove('dark');
+            document.documentElement.setAttribute('data-theme', 'light');
+            document.documentElement.style.colorScheme = 'light';
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-white dark:bg-[#0a0a12] text-slate-900 dark:text-slate-100 antialiased selection:bg-purple-500 selection:text-white transition-colors duration-200">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

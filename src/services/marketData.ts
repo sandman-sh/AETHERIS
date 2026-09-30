@@ -1,0 +1,500 @@
+import {
+  RwaAsset,
+  RwaIssuer,
+  DexLiquidityPool,
+  DerivativeMarketData,
+  MacroYieldComparison,
+  TokenizedEquitySpread,
+  DexTrendingAnalysis,
+  GlobalMarketStats
+} from '../types';
+
+export const GLOBAL_MARKET_STATS: GlobalMarketStats = {
+  fear_and_greed_score: 68,
+  fear_and_greed_sentiment: 'Greed',
+  total_market_cap_usd: 2489140291040,
+  market_cap_24h_change_pct: 2.34,
+  total_volume_24h_usd: 89450280120,
+  btc_dominance_pct: 54.2,
+  rwa_total_tvl_usd: 12450890000,
+  active_rwa_issuers: 48,
+  timestamp: new Date().toISOString()
+};
+
+export const RWA_ASSETS: RwaAsset[] = [
+  {
+    rwa_id: 'rwa_ondo_usdy_01',
+    name: 'Ondo US Dollar Yield',
+    symbol: 'USDY',
+    asset_type: 'government_security',
+    issuer_id: 'iss_ondo_fin',
+    issuer_name: 'Ondo Finance Inc.',
+    price_usd: 1.0542,
+    market_cap_usd: 482910000,
+    volume_24h_usd: 18450000,
+    change_24h_pct: 0.08,
+    underlying_isin_or_ticker: 'US912797HC12 (US T-Bills)',
+    backed_reserve_proof_pct: 100.0,
+    onchain_dex_liquidity_usd: 24100000,
+    slippage_estimated_500k_pct: 0.42,
+    sovereign_risk_rating: 'AAA',
+    primary_chain: 'Ethereum',
+    token_contract: '0x969609253991b3b747b02905ab37c300325d437b',
+    yield_apy: 5.15
+  },
+  {
+    rwa_id: 'rwa_blackrock_buidl_02',
+    name: 'BlackRock USD Institutional Digital Liquidity',
+    symbol: 'BUIDL',
+    asset_type: 'government_security',
+    issuer_id: 'iss_blackrock_sec',
+    issuer_name: 'BlackRock Financial Management',
+    price_usd: 1.0000,
+    market_cap_usd: 542000000,
+    volume_24h_usd: 34100000,
+    change_24h_pct: 0.01,
+    underlying_isin_or_ticker: 'Short-term US Treasuries & Repos',
+    backed_reserve_proof_pct: 100.0,
+    onchain_dex_liquidity_usd: 12500000,
+    slippage_estimated_500k_pct: 1.84,
+    sovereign_risk_rating: 'AAA',
+    primary_chain: 'Ethereum',
+    token_contract: '0x7712c342057371f2a83e74c696e17ff168233b37',
+    yield_apy: 4.95
+  },
+  {
+    rwa_id: 'rwa_mountain_usdm_03',
+    name: 'Mountain Protocol USDM',
+    symbol: 'USDM',
+    asset_type: 'government_security',
+    issuer_id: 'iss_mountain_protocol',
+    issuer_name: 'Mountain Protocol Ltd (Bermuda)',
+    price_usd: 1.0004,
+    market_cap_usd: 168400000,
+    volume_24h_usd: 9240000,
+    change_24h_pct: 0.02,
+    underlying_isin_or_ticker: 'US T-Bills <3 Months',
+    backed_reserve_proof_pct: 102.4,
+    onchain_dex_liquidity_usd: 18900000,
+    slippage_estimated_500k_pct: 0.65,
+    sovereign_risk_rating: 'AA+',
+    primary_chain: 'Base',
+    token_contract: '0x59D9356E565Ab3A36dD77763Fc0d87fEaf85508C',
+    yield_apy: 5.0
+  },
+  {
+    rwa_id: 'rwa_backed_nvda_04',
+    name: 'Backed NVDA (Tokenized NVIDIA)',
+    symbol: 'bNVDA',
+    asset_type: 'stock',
+    issuer_id: 'iss_backed_finance',
+    issuer_name: 'Backed Finance AG (Switzerland)',
+    price_usd: 128.45,
+    market_cap_usd: 39500000,
+    volume_24h_usd: 4890000,
+    change_24h_pct: 3.42,
+    underlying_isin_or_ticker: 'US67066G1040 (NASDAQ: NVDA)',
+    backed_reserve_proof_pct: 100.0,
+    onchain_dex_liquidity_usd: 3850000,
+    slippage_estimated_500k_pct: 4.82,
+    sovereign_risk_rating: 'AA',
+    primary_chain: 'Arbitrum',
+    token_contract: '0x00d83e2003c9d1dfd694cb97e74efb1e84df9a2c'
+  },
+  {
+    rwa_id: 'rwa_backed_aapl_05',
+    name: 'Backed AAPL (Tokenized Apple)',
+    symbol: 'bAAPL',
+    asset_type: 'stock',
+    issuer_id: 'iss_backed_finance',
+    issuer_name: 'Backed Finance AG (Switzerland)',
+    price_usd: 227.80,
+    market_cap_usd: 28400000,
+    volume_24h_usd: 2950000,
+    change_24h_pct: -0.64,
+    underlying_isin_or_ticker: 'US0378331005 (NASDAQ: AAPL)',
+    backed_reserve_proof_pct: 100.0,
+    onchain_dex_liquidity_usd: 2420000,
+    slippage_estimated_500k_pct: 5.91,
+    sovereign_risk_rating: 'AA',
+    primary_chain: 'Arbitrum',
+    token_contract: '0x62919a3b68f54ef482705dd587889f1f0a1c1d8d'
+  },
+  {
+    rwa_id: 'rwa_tether_gold_06',
+    name: 'Tether Gold (Tokenized Physical Gold)',
+    symbol: 'XAUT',
+    asset_type: 'commodity',
+    issuer_id: 'iss_tether_operations',
+    issuer_name: 'TG Commodities Limited',
+    price_usd: 2642.10,
+    market_cap_usd: 685400000,
+    volume_24h_usd: 14200000,
+    change_24h_pct: 0.94,
+    underlying_isin_or_ticker: 'LBMA London Good Delivery Gold Bars',
+    backed_reserve_proof_pct: 100.0,
+    onchain_dex_liquidity_usd: 48900000,
+    slippage_estimated_500k_pct: 0.28,
+    sovereign_risk_rating: 'AA+',
+    primary_chain: 'Ethereum',
+    token_contract: '0x68749665ff8d2d112fa859aa293f07a622782f38'
+  },
+  {
+    rwa_id: 'rwa_matrixdock_stbt_07',
+    name: 'Short-term Treasury Bill Token',
+    symbol: 'STBT',
+    asset_type: 'government_security',
+    issuer_id: 'iss_matrixdock',
+    issuer_name: 'Matrixdock / Matrixport',
+    price_usd: 1.0000,
+    market_cap_usd: 142000000,
+    volume_24h_usd: 4120000,
+    change_24h_pct: 0.01,
+    underlying_isin_or_ticker: 'US Treasury Bills 6M',
+    backed_reserve_proof_pct: 100.0,
+    onchain_dex_liquidity_usd: 8400000,
+    slippage_estimated_500k_pct: 2.15,
+    sovereign_risk_rating: 'A+',
+    primary_chain: 'Ethereum',
+    token_contract: '0x53082eb71297eb692da1a35940026e6371cf7600',
+    yield_apy: 5.12
+  }
+];
+
+export const RWA_ISSUERS: RwaIssuer[] = [
+  {
+    issuer_id: 'iss_ondo_fin',
+    name: 'Ondo Finance Inc.',
+    jurisdiction: 'United States (Delaware) & BVI',
+    regulatory_status: 'Exempt under SEC Reg D / Reg S',
+    total_assets_under_management_usd: 580000000,
+    active_tokens_count: 3,
+    custodian: 'BNY Mellon & Ankura Trust',
+    audit_firm: 'BDO USA, LLP',
+    redemption_cycle: 'Daily (T+1)',
+    counterparty_risk_score: 94,
+    verified_status: true
+  },
+  {
+    issuer_id: 'iss_blackrock_sec',
+    name: 'BlackRock Financial Management',
+    jurisdiction: 'United States (Delaware)',
+    regulatory_status: 'SEC Registered 3(c)(7) Fund',
+    total_assets_under_management_usd: 10500000000000,
+    active_tokens_count: 2,
+    custodian: 'BNY Mellon',
+    audit_firm: 'PricewaterhouseCoopers (PwC)',
+    redemption_cycle: 'Immediate on-chain via Securitize / USDC',
+    counterparty_risk_score: 99,
+    verified_status: true
+  },
+  {
+    issuer_id: 'iss_backed_finance',
+    name: 'Backed Finance AG',
+    jurisdiction: 'Zug, Switzerland',
+    regulatory_status: 'Compliant Swiss DLT Act & Prospectus Reg',
+    total_assets_under_management_usd: 88500000,
+    active_tokens_count: 14,
+    custodian: 'Maerki Baumann & Co. Private Bank',
+    audit_firm: 'Grant Thornton AG',
+    redemption_cycle: 'T+2 Banking Hours',
+    counterparty_risk_score: 88,
+    verified_status: true
+  },
+  {
+    issuer_id: 'iss_mountain_protocol',
+    name: 'Mountain Protocol Ltd',
+    jurisdiction: 'Hamilton, Bermuda',
+    regulatory_status: 'Licensed by Bermuda Monetary Authority (BMA)',
+    total_assets_under_management_usd: 172000000,
+    active_tokens_count: 1,
+    custodian: 'State Street Bank',
+    audit_firm: 'Cohen & Company',
+    redemption_cycle: 'T+0 for Whitelisted, DEX for Retail',
+    counterparty_risk_score: 91,
+    verified_status: true
+  }
+];
+
+export const DEX_POOLS: Record<string, DexLiquidityPool[]> = {
+  'USDY': [
+    {
+      pool_id: 'uniswap_v3_usdy_usdc_eth',
+      pair_symbol: 'USDY/USDC',
+      chain: 'Ethereum',
+      dex_name: 'Uniswap v3',
+      token0_symbol: 'USDY',
+      token1_symbol: 'USDC',
+      reserve_usd: 16400000,
+      volume_24h_usd: 4800000,
+      fee_tier_pct: 0.05,
+      price_ratio: 1.054,
+      utilization_rate_pct: 29.3,
+      holder_gini_coefficient: 0.42,
+      top_10_holders_pct: 38.4,
+      organic_volume_score: 96
+    },
+    {
+      pool_id: 'curve_usdy_crvusd_eth',
+      pair_symbol: 'USDY/crvUSD',
+      chain: 'Ethereum',
+      dex_name: 'Curve Finance',
+      token0_symbol: 'USDY',
+      token1_symbol: 'crvUSD',
+      reserve_usd: 7700000,
+      volume_24h_usd: 1350000,
+      fee_tier_pct: 0.04,
+      price_ratio: 1.0538,
+      utilization_rate_pct: 17.5,
+      holder_gini_coefficient: 0.46,
+      top_10_holders_pct: 42.1,
+      organic_volume_score: 92
+    }
+  ],
+  'bNVDA': [
+    {
+      pool_id: 'uniswap_v3_bnvda_usdc_arb',
+      pair_symbol: 'bNVDA/USDC',
+      chain: 'Arbitrum',
+      dex_name: 'Uniswap v3',
+      token0_symbol: 'bNVDA',
+      token1_symbol: 'USDC',
+      reserve_usd: 3850000,
+      volume_24h_usd: 4890000,
+      fee_tier_pct: 0.3,
+      price_ratio: 128.45,
+      utilization_rate_pct: 127.0,
+      holder_gini_coefficient: 0.68,
+      top_10_holders_pct: 64.2,
+      organic_volume_score: 84
+    }
+  ]
+};
+
+export const DERIVATIVE_MARKETS: DerivativeMarketData[] = [
+  {
+    symbol: 'SOL',
+    derivative_pair: 'SOL-USDT-PERP',
+    exchange: 'Binance / Bybit Aggregated',
+    perpetual_price: 154.20,
+    spot_price: 154.12,
+    basis_pct: 0.052,
+    open_interest_usd: 1840000000,
+    annualized_funding_rate_pct: 14.8,
+    liquidations_24h_usd: 42800000,
+    long_liquidation_vol_usd: 36200000,
+    short_liquidation_vol_usd: 6600000,
+    cascade_fragility_index: 8.74,
+    fragility_status: 'CRITICAL'
+  },
+  {
+    symbol: 'AVAX',
+    derivative_pair: 'AVAX-USDT-PERP',
+    exchange: 'Aggregated CEX',
+    perpetual_price: 28.40,
+    spot_price: 28.38,
+    basis_pct: 0.07,
+    open_interest_usd: 340000000,
+    annualized_funding_rate_pct: 18.2,
+    liquidations_24h_usd: 11200000,
+    long_liquidation_vol_usd: 9400000,
+    short_liquidation_vol_usd: 1800000,
+    cascade_fragility_index: 6.82,
+    fragility_status: 'ELEVATED'
+  },
+  {
+    symbol: 'BTC',
+    derivative_pair: 'BTC-USDT-PERP',
+    exchange: 'Binance / OKX / Bybit',
+    perpetual_price: 64120.0,
+    spot_price: 64105.0,
+    basis_pct: 0.023,
+    open_interest_usd: 14200000000,
+    annualized_funding_rate_pct: 8.4,
+    liquidations_24h_usd: 64800000,
+    long_liquidation_vol_usd: 41200000,
+    short_liquidation_vol_usd: 23600000,
+    cascade_fragility_index: 1.45,
+    fragility_status: 'STABLE'
+  },
+  {
+    symbol: 'ETH',
+    derivative_pair: 'ETH-USDT-PERP',
+    exchange: 'Aggregated CEX',
+    perpetual_price: 2618.5,
+    spot_price: 2617.8,
+    basis_pct: 0.026,
+    open_interest_usd: 7850000000,
+    annualized_funding_rate_pct: 9.6,
+    liquidations_24h_usd: 38200000,
+    long_liquidation_vol_usd: 29100000,
+    short_liquidation_vol_usd: 9100000,
+    cascade_fragility_index: 2.18,
+    fragility_status: 'MODERATE'
+  }
+];
+
+export const MACRO_YIELDS: MacroYieldComparison[] = [
+  {
+    asset_name: 'Ondo US Dollar Yield (USDY)',
+    asset_symbol: 'USDY',
+    category: 'Tokenized Treasury (RWA)',
+    apy_pct: 5.15,
+    duration_days: 45,
+    counterparty_risk: 'Ultra-Low',
+    liquidity_latency: 'Instant DEX',
+    redemption_fee_pct: 0.0,
+    net_yield_100k_1y: 5150
+  },
+  {
+    asset_name: 'BlackRock BUIDL',
+    asset_symbol: 'BUIDL',
+    category: 'Tokenized Treasury (RWA)',
+    apy_pct: 4.95,
+    duration_days: 30,
+    counterparty_risk: 'Ultra-Low',
+    liquidity_latency: 'T+0 Redemption',
+    redemption_fee_pct: 0.0,
+    net_yield_100k_1y: 4950
+  },
+  {
+    asset_name: 'Aave v3 USDC (Ethereum Core)',
+    asset_symbol: 'aUSDC',
+    category: 'DeFi Lending',
+    apy_pct: 6.82,
+    duration_days: 1,
+    counterparty_risk: 'Low',
+    liquidity_latency: 'Instant DEX',
+    redemption_fee_pct: 0.0,
+    net_yield_100k_1y: 6820
+  },
+  {
+    asset_name: 'Ethena sUSDe (Basis Yield)',
+    asset_symbol: 'sUSDe',
+    category: 'Perp Funding Basis',
+    apy_pct: 12.45,
+    duration_days: 7,
+    counterparty_risk: 'Medium',
+    liquidity_latency: 'Locked 7d',
+    redemption_fee_pct: 0.1,
+    net_yield_100k_1y: 12350
+  },
+  {
+    asset_name: 'US 3-Month Treasury Bill (Fed Benchmark)',
+    asset_symbol: 'DGS3MO',
+    category: 'TradFi Benchmark',
+    apy_pct: 4.88,
+    duration_days: 90,
+    counterparty_risk: 'Ultra-Low',
+    liquidity_latency: 'T+2 Banking',
+    redemption_fee_pct: 0.0,
+    net_yield_100k_1y: 4880
+  }
+];
+
+export const TOKENIZED_EQUITIES: TokenizedEquitySpread[] = [
+  {
+    ticker: 'NVDA',
+    name: 'NVIDIA Corporation',
+    token_symbol: 'bNVDA',
+    chain: 'Arbitrum One',
+    dex_venue: 'Uniswap v3',
+    onchain_price_usd: 128.45,
+    tradfi_nyse_close_usd: 124.70,
+    weekend_premium_discount_pct: 3.01,
+    is_weekend_active: true,
+    weekend_volume_usd: 4890000,
+    implied_monday_open_gap_usd: 3.75,
+    arbitrage_signal: 'SHORT ARBITRAGE'
+  },
+  {
+    ticker: 'TSLA',
+    name: 'Tesla, Inc.',
+    token_symbol: 'bTSLA',
+    chain: 'Arbitrum One',
+    dex_venue: 'Uniswap v3',
+    onchain_price_usd: 242.10,
+    tradfi_nyse_close_usd: 243.85,
+    weekend_premium_discount_pct: -0.72,
+    is_weekend_active: true,
+    weekend_volume_usd: 2150000,
+    implied_monday_open_gap_usd: -1.75,
+    arbitrage_signal: 'PARITY BALANCED'
+  },
+  {
+    ticker: 'AAPL',
+    name: 'Apple Inc.',
+    token_symbol: 'bAAPL',
+    chain: 'Solana',
+    dex_venue: 'Raydium CLMM',
+    onchain_price_usd: 227.80,
+    tradfi_nyse_close_usd: 228.15,
+    weekend_premium_discount_pct: -0.15,
+    is_weekend_active: true,
+    weekend_volume_usd: 1840000,
+    implied_monday_open_gap_usd: -0.35,
+    arbitrage_signal: 'PARITY BALANCED'
+  },
+  {
+    ticker: 'SPY',
+    name: 'SPDR S&P 500 ETF Trust',
+    token_symbol: 'bSPY',
+    chain: 'Arbitrum One',
+    dex_venue: 'Camelot DEX',
+    onchain_price_usd: 574.90,
+    tradfi_nyse_close_usd: 569.20,
+    weekend_premium_discount_pct: 1.00,
+    is_weekend_active: true,
+    weekend_volume_usd: 8120000,
+    implied_monday_open_gap_usd: 5.70,
+    arbitrage_signal: 'SHORT ARBITRAGE'
+  }
+];
+
+export const DEX_TRENDING: DexTrendingAnalysis[] = [
+  {
+    token_symbol: 'SOLANA_RWA_USDT',
+    token_name: 'Solana Treasury Vault',
+    chain: 'Solana',
+    contract_address: '7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU',
+    price_usd: 1.021,
+    change_24h_pct: 1.84,
+    volume_24h_usd: 18420000,
+    liquidity_usd: 9400000,
+    vol_to_liq_ratio: 1.96,
+    wash_trading_probability_pct: 6.2,
+    insider_accumulation_detected: true,
+    organic_trust_score: 94,
+    security_flag: 'VERIFIED'
+  },
+  {
+    token_symbol: 'APEX_MOON',
+    token_name: 'Apex Synthetic Yield',
+    chain: 'Base',
+    contract_address: '0x4b12c9a9354e53cf8240ef1a0172e2cf59106093',
+    price_usd: 0.0482,
+    change_24h_pct: 42.1,
+    volume_24h_usd: 14200000,
+    liquidity_usd: 340000,
+    vol_to_liq_ratio: 41.76,
+    wash_trading_probability_pct: 84.5,
+    insider_accumulation_detected: false,
+    organic_trust_score: 18,
+    security_flag: 'SUSPICIOUS_VOLUME'
+  },
+  {
+    token_symbol: 'AERO_RWA_BOND',
+    token_name: 'Aerodrome RWA Yield Index',
+    chain: 'Base',
+    contract_address: '0x940181a94a35a4569e4529a3cdfb74944fe6504a',
+    price_usd: 1.148,
+    change_24h_pct: 3.12,
+    volume_24h_usd: 6840000,
+    liquidity_usd: 4820000,
+    vol_to_liq_ratio: 1.41,
+    wash_trading_probability_pct: 4.8,
+    insider_accumulation_detected: true,
+    organic_trust_score: 92,
+    security_flag: 'VERIFIED'
+  }
+];
