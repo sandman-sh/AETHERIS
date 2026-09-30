@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/api/cmc/(.*)",
+      "destination": "/api/cmc/[...path]?path=$1"
+    },
+    {
+      "source": "/api/cmc",
+      "destination": "/api/cmc/index"
+    },
+    {
+      "source": "/api/cmc-status",
+      "destination": "/api/cmc-status"
+    },
+    {
+      "source": "/api/chat",
+      "destination": "/api/chat"
+    },
+    {
+      "source": "/((?!api/).*)",
+      "destination": "/index.html"
+    }
+  ]
+}
