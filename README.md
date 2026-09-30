@@ -127,8 +127,8 @@ npm run dev
 ```
 
 The terminal interface will be active at:
-* **Local Workspace**: `http://localhost:5174/` (or default port configured)
-* **API Telemetry**: `http://localhost:5174/api/cmc-status`
+* **Local Workspace**: `http://localhost:5173/` (or default port configured)
+* **API Telemetry**: `http://localhost:5173/api/cmc-status`
 
 ---
 

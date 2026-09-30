@@ -128,7 +128,7 @@ Provide clean, direct answers. Do NOT produce broken or unescaped markdown aster
                   headers: {
                     Authorization: `Bearer ${openRouterKey}`,
                     'Content-Type': 'application/json',
-                    'HTTP-Referer': 'http://localhost:5174',
+                    'HTTP-Referer': 'http://localhost:5173',
                     'X-Title': 'Aetheris KIMO Copilot'
                   },
                   body: JSON.stringify(openRouterPayload)
@@ -150,7 +150,7 @@ Provide clean, direct answers. Do NOT produce broken or unescaped markdown aster
     ],
     server: {
       host: true,
-      port: 5174,
+      port: 5173,
       proxy: {
         '/api/cmc': {
           target: 'https://pro-api.coinmarketcap.com',
